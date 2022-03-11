@@ -9,8 +9,9 @@ TEST_CASE("Task B: encrypting Caesar Cipher:") {
     CHECK(encrypt_caesar("Hello, World!" , 10) == "Rovvy, Gybvn!");
 }
 
-TEST_CASE("Task C: encrypting Vigenere ciphers "){
-    CHECK(encrypt_vignere("Hello, World!", "cake") == "Jevpq, Wyvnd!");
+TEST_CASE("Task C: ecrypting Vigenere Cipher:"){
+    CHECK(encrypt_vigenere("Hello, World!", "cake") == "Jevpq, Wyvnd!");
+    CHECK(encrypt_vigenere("Hello, World!", "EGG") == "Lkrpu, Csxrh!");
 }
 
 TEST_CASE("Task D: decrypting: "){
@@ -20,9 +21,8 @@ TEST_CASE("Task D: decrypting: "){
 
     CHECK(decrypt_vigenere(encrypt_vigenere("Hello, World!", "cake"), "cake") == "Hello, World!");
 
-    CHECK(decrypt_vigenere(encrypt_vigenere("Hello World!", "1234567890"), "1234567890") == "Impossible keyword"); 
-
-    CHECK(decrypt_vigenere(encrypt_vigenere("Egg", "Vigenere"),"Vigenere") == "Egg");
+        CHECK(decrypt_vigenere(encrypt_vigenere("Hello, World!", "1234567890"), "1234567890") == "Impossible keyword");
+        CHECK(decrypt_vigenere(encrypt_vigenere("Vigenere", "EGG"), "EGG") == "Vigenere");
 
 }
 

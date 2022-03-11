@@ -23,15 +23,15 @@ int get_position_in_array(char input) {
 // gets char from the position of the inputted number
 char cipher(int in, bool upper) { 
     if(in > 25) { 
-        return is_upper ? caps[in - 26] : lower[in - 26]; 
+        return upper ? caps[in - 26] : lower[in - 26]; 
     }
 
-    return is_upper ? caps[in] : lower[in];
+    return upper ? caps[in] : lower[in];
 }
 
 // checks if the input is uppercase or lowercase 
 bool is_upper(char in) { 
-    for(auto a : upper) { 
+    for(auto a : caps) { 
         if(a == in) { 
             return true; 
         }
@@ -56,7 +56,7 @@ std::string encrypt_vigenere(std::string plaintext, std::string keyword) {
 // ASCII Letters range, 65 <= x <= 90 && 97 <= x <= 122
     for(int i = 0; i < plaintext.length(); i++) { 
         if((int)(plaintext.at(i)) >= 65 && (int)plaintext.at(i) <= 90 || (int)plaintext.at(i) >= 97 && (int)(plaintext.at(i)) <= 122) { 
-            result += get_char_cipher(get_position_in_array(plaintext.at(i)) + get_position_in_array(keyword.at(keyword_count)), is_upper(plaintext.at(i)));
+            result += cipher(get_position_in_array(plaintext.at(i)) + get_position_in_array(keyword.at(keyword_count)), is_upper(plaintext.at(i)));
             keyword_count++;
         } else { 
             result += plaintext.at(i); 
